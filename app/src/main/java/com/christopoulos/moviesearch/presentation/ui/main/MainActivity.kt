@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
+import com.christopoulos.moviesearch.presentation.navigation.AppNavHost
 import com.christopoulos.moviesearch.ui.theme.MovieSearchTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MovieSearchTheme  {
                 val navController = rememberNavController()
-                //AppNavHost(navController = navController)
+                AppNavHost(navController = navController)
             }
         }
     }
