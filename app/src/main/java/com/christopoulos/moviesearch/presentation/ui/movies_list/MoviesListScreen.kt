@@ -9,10 +9,14 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.request.ImageRequest
+import com.christopoulos.moviesearch.R
 import com.christopoulos.moviesearch.domain.model.Movie
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -155,8 +159,13 @@ private fun MovieRow(
             .clickable(onClick = onClick) // clickable όλο το row
     ) {
         AsyncImage(
-            model = movie.imageUrl,
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(movie.imageUrl)
+                .crossfade(true)
+                .build(),
             contentDescription = movie.title,
+            placeholder = painterResource(R.drawable.placeholder_wide),
+            error = painterResource(R.drawable.placeholder_error),
             modifier = Modifier.size(100.dp)
         )
         Spacer(Modifier.width(12.dp))

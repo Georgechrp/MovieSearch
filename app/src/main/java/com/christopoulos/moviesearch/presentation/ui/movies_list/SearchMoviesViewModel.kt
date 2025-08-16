@@ -165,4 +165,16 @@ class SearchMoviesViewModel @Inject constructor(
             }
         }
     }
+
+
+    private fun Throwable.toUserMessage(): String = when (this) {
+        is java.net.UnknownHostException, is java.net.SocketTimeoutException, is java.io.IOException ->
+            "Δεν υπάρχει σύνδεση ή υπήρξε πρόβλημα δικτύου. Έλεγξε τη σύνδεσή σου."
+        is retrofit2.HttpException -> when (code()) {
+            401 -> "Σφάλμα αυθεντικοποίησης στο TMDB."
+            404 -> "Η υπηρεσία δεν επέστρεψε αποτελέσματα."
+            else -> "Σφάλμα διακομιστή (${code()}). Δοκίμασε αργότερα."
+        }
+        else -> "Κάτι πήγε στραβά. Δοκίμασε ξανά."
+    }
 }

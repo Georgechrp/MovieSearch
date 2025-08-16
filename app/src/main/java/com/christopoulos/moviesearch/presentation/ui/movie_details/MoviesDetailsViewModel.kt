@@ -24,9 +24,7 @@ class MovieDetailsViewModel @Inject constructor(
     var state = androidx.compose.runtime.mutableStateOf(MovieDetailsUiState())
         private set
 
-    private val movieId: Int? = runCatching {
-        savedStateHandle.get<String>("movieId")?.toInt()
-    }.getOrNull()
+    private val movieId: Int? = savedStateHandle.get<Int>("movieId")
 
     init {
         movieId?.let { load(it) }

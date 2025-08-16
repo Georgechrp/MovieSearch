@@ -5,8 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.christopoulos.moviesearch.presentation.ui.movie_details.MovieDetailsScreen
 import com.christopoulos.moviesearch.presentation.ui.movies_list.MoviesListScreen
 import com.christopoulos.moviesearch.presentation.ui.splash.SplashScreen
@@ -43,7 +45,10 @@ private fun NavGraphBuilder.moviesList(navController: NavController) {
 }
 
 private fun NavGraphBuilder.detailsGraph(navController: NavController) {
-    composable(Destination.Details.route) {
+    composable(
+        route = Destination.Details.route,
+        arguments = listOf(navArgument("movieId") { type = NavType.IntType })
+    ) {
         MovieDetailsScreen(
             onBack = { navController.popBackStack() }
         )

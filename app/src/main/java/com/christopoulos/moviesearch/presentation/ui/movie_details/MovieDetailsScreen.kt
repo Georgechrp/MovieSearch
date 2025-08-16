@@ -6,9 +6,13 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.request.ImageRequest
+import com.christopoulos.moviesearch.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,8 +63,13 @@ fun MovieDetailsScreen(
                             .padding(16.dp)
                     ) {
                         AsyncImage(
-                            model = movie.imageUrl,
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(movie.imageUrl)
+                                .crossfade(true)
+                                .build(),
                             contentDescription = movie.title,
+                            placeholder = painterResource(R.drawable.placeholder_wide),
+                            error = painterResource(R.drawable.placeholder_wide),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(220.dp)
