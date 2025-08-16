@@ -39,6 +39,8 @@ gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 
+retrofit-moshi = { module = "com.squareup.retrofit2:converter-moshi", version = "2.9.0" }
+moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version = "1.15.1" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

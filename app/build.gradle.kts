@@ -72,4 +72,14 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.7")
     //Images
     implementation("io.coil-kt:coil-compose:2.6.0")
+
+
+
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
+
+    implementation(libs.retrofit.moshi)
+    implementation(libs.moshi.kotlin)
 }
