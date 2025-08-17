@@ -37,7 +37,7 @@ Android Developer Assignment – Simple app that fetches and displays movies fro
 - Coil – Image loading
 
 - Coroutines + ViewModel – Asynchronous data fetching & state mgmt.
-
+```text
 📂 Project Structure
 com.christopoulos.moviesearch
  ├── data
@@ -58,6 +58,7 @@ com.christopoulos.moviesearch
  │   │   └── movies_genres    # Genres grid screen + ViewModel
  │
  └── MovieSearchApp.kt  # Hilt Android Application
+```
 
 🚀 Setup Instructions
 Clone the project
