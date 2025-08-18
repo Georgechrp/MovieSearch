@@ -1,8 +1,11 @@
 package com.christopoulos.moviesearch.presentation.ui.movies_list
 
+import android.app.Application
+import android.content.Context
 import com.christopoulos.moviesearch.domain.model.Movie
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.christopoulos.moviesearch.R
 import com.christopoulos.moviesearch.data.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -21,7 +24,8 @@ data class MoviesListUiState(
 
 @HiltViewModel
 class SearchMoviesViewModel @Inject constructor(
-    private val repository: MovieRepository
+    private val repository: MovieRepository,
+    private val app: Application
 ) : ViewModel() {
 
     var state = androidx.compose.runtime.mutableStateOf(MoviesListUiState())
@@ -133,7 +137,7 @@ class SearchMoviesViewModel @Inject constructor(
             } catch (e: Exception) {
                 state.value = s.copy(
                     isLoading = false,
-                    error = e.message ?: "Κάτι πήγε στραβά"
+                    error = e.message ?: e.toUserMessage(app)
                 )
             }
         }
@@ -160,21 +164,24 @@ class SearchMoviesViewModel @Inject constructor(
             } catch (e: Exception) {
                 state.value = s.copy(
                     isLoading = false,
-                    error = e.message ?: "Κάτι πήγε στραβά"
+                    error = e.message ?: e.toUserMessage(app)
                 )
             }
         }
     }
 
 
-    private fun Throwable.toUserMessage(): String = when (this) {
-        is java.net.UnknownHostException, is java.net.SocketTimeoutException, is java.io.IOException ->
-            "Δεν υπάρχει σύνδεση ή υπήρξε πρόβλημα δικτύου. Έλεγξε τη σύνδεσή σου."
+    private fun Throwable.toUserMessage(context: Context): String = when (this) {
+        is java.net.UnknownHostException,
+        is java.net.SocketTimeoutException,
+        is java.io.IOException ->
+            context.getString(R.string.network_error)
+
         is retrofit2.HttpException -> when (code()) {
-            401 -> "Σφάλμα αυθεντικοποίησης στο TMDB."
-            404 -> "Η υπηρεσία δεν επέστρεψε αποτελέσματα."
-            else -> "Σφάλμα διακομιστή (${code()}). Δοκίμασε αργότερα."
+            401 -> context.getString(R.string.auth_error)
+            404 -> context.getString(R.string.not_found_error)
+            else -> context.getString(R.string.server_error, code())
         }
-        else -> "Κάτι πήγε στραβά. Δοκίμασε ξανά."
+        else -> context.getString(R.string.unexpected_error)
     }
 }

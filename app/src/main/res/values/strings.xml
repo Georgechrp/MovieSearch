@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Movie List</string>
+    <string name="app_name" translatable="false">Movie List</string>
+    <string name="error">Σφάλμα</string>
+    <string name="retry">Δοκίμασε ξανά</string>
+    <string name="details_load_failed">Αποτυχία φόρτωσης λεπτομερειών</string>
+    <string name="search_hint">Αναζήτηση με keyword (π.χ. alien)</string>
+    <string name="search_empty_state">Γράψε ένα keyword για αναζήτηση ή επίλεξε κατηγορία από πάνω.</string>
+    <string name="rating">Βαθμολογία</string>
+    <string name="something_went_wrong">Κάτι πήγε στραβά</string>
+    <string name="network_error">Δεν υπάρχει σύνδεση ή υπήρξε πρόβλημα δικτύου. Έλεγξε τη σύνδεσή σου.</string>
+    <string name="auth_error">Σφάλμα αυθεντικοποίησης στο TMDB.</string>
+    <string name="not_found_error">Η υπηρεσία δεν επέστρεψε αποτελέσματα.</string>
+    <string name="server_error">Σφάλμα διακομιστή (%1$d). Δοκίμασε αργότερα.</string>
+    <string name="unexpected_error">Κάτι πήγε στραβά. Δοκίμασε ξανά.</string>
 </resources>

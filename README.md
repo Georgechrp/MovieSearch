@@ -1,6 +1,7 @@
 🎬 MovieSearch App
 
-Android Developer Assignment – Simple app that fetches and displays movies from The Movie Database (TMDB).
+Android Developer Assignment – Demo app using The Movie Database (TMDB) API
+A modern Android app built for the technical assessment, following clean architecture with Repository pattern, Hilt DI, and 100% Jetpack Compose UI.
 
 📌 Features
 
@@ -21,6 +22,10 @@ Android Developer Assignment – Simple app that fetches and displays movies fro
 - Pagination support (loads more movies when scrolling)
 
 - Compatible with Android SDK 21+
+
+🚫 Not Implemented
+- Unit tests / UI tests 
+- Offline caching / Room database – networking only, no persistence
 
 ⚙️ Tech Stack
 
@@ -55,7 +60,7 @@ com.christopoulos.moviesearch
  │   │   ├── main      # Main Activity
  │   │   ├── movies_list      # Search list screen + ViewModel
  │   │   ├── movie_details    # Movie details screen + ViewModel
- │   │   └── movies_genres    # Genres grid screen + ViewModel
+ │   │   └── splash    # Splash Screen
  │
  └── MovieSearchApp.kt  # Hilt Android Application
 ```
@@ -80,6 +85,6 @@ The TMDB API key is already included for testing:
 
 You can replace it in NetworkModule.kt if needed.
 
-👉 Check the presentation (includes screenshots)  [here](https://georgioschristopoulos.info/moviesearchPresentation/index.html)
+👉 Check the presentation (includes screenshots, .apk file to download, library & plugin versions)  [here](https://georgioschristopoulos.info/moviesearchPresentation/index.html)
 
 

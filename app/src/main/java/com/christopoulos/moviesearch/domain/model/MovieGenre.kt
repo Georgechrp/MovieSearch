@@ -19,16 +19,3 @@ enum class MovieGenre(val displayName: String, val apiName: String) {
     }
 }
 
-
-fun typeIconRes(type: MovieGenre): Int = when (type) {
-    MovieGenre.ACTION   -> R.drawable.action
-    MovieGenre.ADVENTURE     -> R.drawable.adventure
-    MovieGenre.ANIMATION    -> R.drawable.animation
-    MovieGenre.COMEDY -> R.drawable.comedy
-    MovieGenre.DRAMA    -> R.drawable.drama
-    MovieGenre.FANTASY      -> R.drawable.fantasy
-    MovieGenre.CRIME -> R.drawable.crime
-    MovieGenre.MYSTERY   -> R.drawable.mystery
-    MovieGenre.ROMANCE   -> R.drawable.romance
-    MovieGenre.SCIENCE_FICTION   -> R.drawable.scifi
-}

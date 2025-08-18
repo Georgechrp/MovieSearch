@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error">Error</string>
+    <string name="retry">Try again</string>
+    <string name="details_load_failed">Failed to load details</string>
+    <string name="search_hint">Search keyword (e.g. alien)</string>
+    <string name="search_empty_state">Type a keyword to search or select a category above.</string>
+    <string name="rating">Rating</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="network_error">No connection or network issue. Please check your connection.</string>
+    <string name="auth_error">Authentication error with TMDB.</string>
+    <string name="not_found_error">The service returned no results.</string>
+    <string name="server_error">Server error (%1$d). Please try again later.</string>
+    <string name="unexpected_error">Something went wrong. Please try again.</string>
+</resources>

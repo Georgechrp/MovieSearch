@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -28,7 +29,7 @@ fun MoviesListScreen(
     val ui by viewModel.state
 
     Scaffold(
-        topBar = { SmallTopAppBar(title = { Text("Movie Search") }) }
+        topBar = { TopAppBar(title = { Text("Movie Search") }) }
     ) { inner ->
         Column(
             Modifier
@@ -43,7 +44,7 @@ fun MoviesListScreen(
                     text = it
                     viewModel.onQueryChange(it.text)
                 },
-                placeholder = { Text("Search keyword (e.g. alien)") },
+                placeholder = { Text(text = stringResource(R.string.search_hint)) },
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -60,11 +61,11 @@ fun MoviesListScreen(
             if (ui.error != null && ui.items.isEmpty()) {
                 Text("Σφάλμα: ${ui.error}", color = MaterialTheme.colorScheme.error)
                 Spacer(Modifier.height(8.dp))
-                Button(onClick = { viewModel.retry() }) { Text("Δοκίμασε ξανά") }
+                Button(onClick = { viewModel.retry() }) { Text(text = stringResource(R.string.retry)) }
             } else if (ui.items.isEmpty() && ui.query.isBlank() && viewModel.getSelectedGenreId() == null) {
                 // Empty state οδηγία
                 Text(
-                    "Γράψε ένα keyword για αναζήτηση ή επίλεξε κατηγορία από πάνω.",
+                    text = stringResource(R.string.search_empty_state),
                     style = MaterialTheme.typography.bodyMedium
                 )
             } else {
@@ -129,7 +130,7 @@ private fun MoviesList(
                 onEndReached()
             }
             MovieRow(movie = movie, onClick = { onMovieClick(movie.id) })
-            Divider()
+            HorizontalDivider()
         }
 
         if (isLoading) {
