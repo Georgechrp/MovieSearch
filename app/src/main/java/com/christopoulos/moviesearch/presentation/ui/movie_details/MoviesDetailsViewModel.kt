@@ -8,6 +8,7 @@ import com.christopoulos.moviesearch.domain.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
+import com.christopoulos.moviesearch.util.toUserMessage
 
 data class MovieDetailsUiState(
     val isLoading: Boolean = false,
@@ -18,6 +19,7 @@ data class MovieDetailsUiState(
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     private val repository: MovieRepository,
+    private val app: android.app.Application,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -41,11 +43,13 @@ class MovieDetailsViewModel @Inject constructor(
                 val movie = repository.getMovieDetails(id)
                 state.value = MovieDetailsUiState(isLoading = false, movie = movie)
             } catch (e: Exception) {
+                val userMessage = e.toUserMessage(app)
                 state.value = MovieDetailsUiState(
                     isLoading = false,
-                    error = e.message ?: "Αποτυχία φόρτωσης λεπτομερειών"
+                    error = userMessage
                 )
             }
         }
     }
+
 }

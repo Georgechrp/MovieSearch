@@ -1,17 +1,16 @@
 package com.christopoulos.moviesearch.presentation.ui.movies_list
 
 import android.app.Application
-import android.content.Context
 import com.christopoulos.moviesearch.domain.model.Movie
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.christopoulos.moviesearch.R
 import com.christopoulos.moviesearch.data.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.christopoulos.moviesearch.util.toUserMessage
 
 data class MoviesListUiState(
     val query: String = "",
@@ -137,7 +136,7 @@ class SearchMoviesViewModel @Inject constructor(
             } catch (e: Exception) {
                 state.value = s.copy(
                     isLoading = false,
-                    error = e.message ?: e.toUserMessage(app)
+                    error = e.toUserMessage(app)
                 )
             }
         }
@@ -164,24 +163,11 @@ class SearchMoviesViewModel @Inject constructor(
             } catch (e: Exception) {
                 state.value = s.copy(
                     isLoading = false,
-                    error = e.message ?: e.toUserMessage(app)
+                    error = e.toUserMessage(app)
                 )
             }
         }
     }
 
 
-    private fun Throwable.toUserMessage(context: Context): String = when (this) {
-        is java.net.UnknownHostException,
-        is java.net.SocketTimeoutException,
-        is java.io.IOException ->
-            context.getString(R.string.network_error)
-
-        is retrofit2.HttpException -> when (code()) {
-            401 -> context.getString(R.string.auth_error)
-            404 -> context.getString(R.string.not_found_error)
-            else -> context.getString(R.string.server_error, code())
-        }
-        else -> context.getString(R.string.unexpected_error)
-    }
 }
