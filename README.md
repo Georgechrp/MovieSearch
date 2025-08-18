@@ -85,6 +85,6 @@ The TMDB API key is already included for testing:
 
 You can replace it in NetworkModule.kt if needed.
 
-👉 Check the presentation (includes screenshots, .apk file to download, library & plugin versions)  [here](https://georgioschristopoulos.info/moviesearchPresentation/index.html)
+👉 Check the presentation (includes screenshots, video, .apk file to download, library & plugin versions)  [here](https://georgioschristopoulos.info/moviesearchPresentation/index.html)
 
 
