@@ -2,6 +2,11 @@ package com.christopoulos.moviesearch.data.remote
 
 import com.christopoulos.moviesearch.domain.model.Movie
 
+// ------------ Data Layer: DTOs & Mapping ---------------------
+// Εδώ ορίζονται οι remote data classes που αντικατοπτρίζουν τα responses του TMDB API.
+// Παράλληλα παρέχονται extension functions για μετατροπή σε domain models (Movie).
+// Η ύπαρξη imageUrl ήδη ενσωματώνει το IMAGE_BASE ώστε να μη χρειάζεται η UI layer να το "ξέρει".
+
 private const val IMAGE_BASE = "https://image.tmdb.org/t/p/w500"
 
 fun MovieSummary.toDomain(): Movie {

@@ -5,6 +5,10 @@ import com.christopoulos.moviesearch.domain.model.Movie
 import com.christopoulos.moviesearch.data.remote.toDomain
 import com.christopoulos.moviesearch.domain.model.MovieGenre
 
+// MovieRepositoryImpl: Υλοποιεί το abstraction του domain repository.
+// - Αναθέτει καλέσματα στο Retrofit API
+// - Μετατρέπει DTOs σε domain models
+// - Παρέχει mapping genres -> TMDB ids για εύκολη χρήση από UI/domain
 class MovieRepositoryImpl(
     private val api: TmdbApi
 ) : MovieRepository {

@@ -15,6 +15,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.request.ImageRequest
 import com.christopoulos.moviesearch.R
 
+// MovieDetailsScreen:
+// - Εμφανίζει top bar με τίτλο & back navigation
+// - Διαχειρίζεται 3 καταστάσεις: loading, error, success
+// - Στην επιτυχή φόρτωση δείχνει εικόνα + βασικές λεπτομέρειες
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieDetailsScreen(
